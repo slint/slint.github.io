@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>{{ title|d('Almost there...') }}</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/highlight.css">
+  </head>
+  <body>
+  <header>
+    <h1>Almost there...</h1>
+    <a href="/">blog</a> |
+    <a target="_blank" href="https://github.com/slint">github</a> |
+    <a target="_blank" href="https://gitter.im/slint">gitter</a> |
+    <a target="_blank" href="https://twitter.com/AlexIoPan">twitter</a> |
+    <a href="/about.html">about</a>
+  </header>
+  <hr>
+  {{ content }}
+  {% if created %}
+  <small title="{{created.isoformat()}}">written on {{ created.strftime('%A, %B %-d, %Y') }}</small>
+  {% endif %}
+  <hr>
+  <footer>
+    <p>© Copyright 2019 by Alex Ioannidis. Content licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 License</a>.</p>
+  </footer>
+  </body>
+</html>

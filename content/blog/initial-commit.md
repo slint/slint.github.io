@@ -1,0 +1,3 @@
+# Initial commit
+
+Hey y'all! Here's my first blog post, just testing stuff out...

@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
+
+body {
+  margin: 0 auto;
+  max-width: 50em;
+  font-family: "Quicksand", "Helvetica", "Arial", sans-serif;
+  -moz-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  padding: 2.5em 1em;
+  color: #444;
+}
+
+a {
+  color: #e1b237;
+}
+
+h2 {
+  margin-top: 1em;
+  padding-top: 1em;
+}
+
+h1, h2, strong {
+  color: #222;
+}
+
+code, pre {
+  background: #f5f7f9;
+  border-bottom: 1px solid #d8dee9;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.8em;
+  -moz-font-smoothing: grayscale;
+  -webkit-font-smoothing: initial;
+}
+
+code {
+  padding: 2px 4px;
+  vertical-align: text-bottom;
+}
+
+pre {
+  padding: 1em;
+  overflow: auto;
+  border-left: 2px solid #69c;
+}
+
+header h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 3em;
+  font-weight: 600;
+}
+
+footer p {
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+  font-size: 0.8em;
+  text-align: right;
+  color: #888;
+}
