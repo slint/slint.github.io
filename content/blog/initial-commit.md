@@ -1,3 +1,3 @@
-# Initial commit
+# Initial commit and how I built my blog
 
 Hey y'all! Here's my first blog post, just testing stuff out...
