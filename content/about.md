@@ -13,4 +13,4 @@ If you want to contact me, you can reach me via one of the following communicati
 - DM me on [Twitter](https://twitter.com/AlexIoPan)
 - I often go around by the nickname `slint`, a tribute to the homonymous [post-rock pioneer band](https://en.wikipedia.org/wiki/Slint).
 
-This blog is written in Markdown and is put together via a small Python script which uses [`mistune`](https://github.com/lepture/mistune) for Markdown processing, [`Pygments`](http://pygments.org/) for code highlighting and [`Jinja`](http://jinja.pocoo.org/) for some very basic templating. Source code can be found [on github](https://github.com/slint/blog).
+This blog is written in Markdown and is put together via a small Python script which uses [`mistune`](https://github.com/lepture/mistune) for Markdown processing, [`Pygments`](http://pygments.org/) for code highlighting and [`Jinja`](http://jinja.pocoo.org/) for some very basic templating. Source code can be found [on github](https://github.com/slint/slint.github.io).
