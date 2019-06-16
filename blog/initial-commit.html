@@ -23,7 +23,7 @@
   <small title="2019-06-13T17:21:23+02:00">written on Thursday, June 13, 2019</small>
   
   
-  <small title="2019-06-16T06:19:46+02:00"> (updated on Sunday, June 16, 2019)</small>
+  <small title="2019-06-16T06:21:14+02:00"> (updated on Sunday, June 16, 2019)</small>
   
   <h1>Initial commit: how I built my blog</h1>
 <p>Hey y'all, I decided to start a blog! I've been thinking of doing so for a while now and as the saying goes, <em>"there's no better time than the present"</em>. This is not meant to be a steady <em>one-post-per-week</em> kind of thing (god forbid...), but more of an occasional brain dump of things I come across at work/personal time and I'd like to write about. Most of these "things" will probably be programming-related, but I might sneak in a couple of other topics, like music, TV-series/movies, and other normal-people stuff if I feel fancy.</p>
@@ -156,6 +156,38 @@
 <li><a target="_blank" href="https://jgthms.com/web-design-in-4-minutes/">"Web Design in 4 Minutes"</a>, by Jeremy Thomas, creator of the Bulma CSS framework</li>
 </ul>
 <p>By hacking around I ended up with <a target="_blank" href="https://github.com/slint/slint.github.io/blob/source/style.css">~30 lines of CSS</a> that make the darn thing pleasant to look at.</p>
+<div class="highlight"><pre><span></span><span class="p">@</span><span class="k">import</span> <span class="nt">url</span><span class="o">(</span><span class="s1">&#39;https://fonts.googleapis.com/css?family=Quicksand&amp;display=swap&#39;</span><span class="o">)</span><span class="p">;</span>
+<span class="p">@</span><span class="k">import</span> <span class="nt">url</span><span class="o">(</span><span class="s1">&#39;https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;display=swap&#39;</span><span class="o">)</span><span class="p">;</span>
+
+<span class="nt">body</span> <span class="p">{</span>
+  <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="kc">auto</span><span class="p">;</span>
+  <span class="k">max-width</span><span class="p">:</span> <span class="mi">50</span><span class="kt">em</span><span class="p">;</span>
+  <span class="k">font-family</span><span class="p">:</span> <span class="s2">&quot;Quicksand&quot;</span><span class="p">,</span> <span class="s2">&quot;Helvetica&quot;</span><span class="p">,</span> <span class="s2">&quot;Arial&quot;</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
+  <span class="kp">-moz-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">grayscale</span><span class="p">;</span>
+  <span class="kp">-webkit-</span><span class="n">font-smoothing</span><span class="p">:</span> <span class="n">antialiased</span><span class="p">;</span>
+  <span class="k">text-align</span><span class="p">:</span> <span class="kc">justify</span><span class="p">;</span>
+  <span class="k">line-height</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">;</span>
+  <span class="k">padding</span><span class="p">:</span> <span class="mi">2</span><span class="kt">em</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+  <span class="k">color</span><span class="p">:</span> <span class="mh">#444</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">a</span> <span class="p">{</span> <span class="k">color</span><span class="p">:</span> <span class="mh">#1a5579</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">h1</span><span class="o">,</span> <span class="nt">h2</span><span class="o">,</span> <span class="nt">strong</span> <span class="p">{</span> <span class="k">color</span><span class="p">:</span> <span class="mh">#222</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">h1</span> <span class="p">{</span> <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="kc">auto</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">h2</span> <span class="p">{</span> <span class="k">padding-top</span><span class="p">:</span> <span class="mf">0.5</span><span class="kt">em</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="nt">code</span><span class="o">,</span> <span class="nt">pre</span> <span class="p">{</span>
+  <span class="k">background</span><span class="p">:</span> <span class="mh">#f5f7f9</span><span class="p">;</span>
+  <span class="k">border-bottom</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#d8dee9</span><span class="p">;</span>
+  <span class="k">font-family</span><span class="p">:</span> <span class="s1">&#39;Source Code Pro&#39;</span><span class="p">,</span> <span class="kc">monospace</span><span class="p">;</span>
+  <span class="k">font-size</span><span class="p">:</span> <span class="mf">0.8</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">code</span> <span class="p">{</span> <span class="k">padding</span><span class="p">:</span> <span class="mi">2</span><span class="kt">px</span> <span class="mi">4</span><span class="kt">px</span><span class="p">;</span> <span class="k">vertical-align</span><span class="p">:</span> <span class="kc">text</span><span class="o">-</span><span class="kc">bottom</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">pre</span> <span class="p">{</span> <span class="k">padding</span><span class="p">:</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span> <span class="k">overflow</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span> <span class="k">border-left</span><span class="p">:</span> <span class="mi">2</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#C04144</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="nt">header</span> <span class="nt">h1</span> <span class="p">{</span> <span class="k">font-size</span><span class="p">:</span> <span class="mi">3</span><span class="kt">em</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">header</span> <span class="nt">h1</span> <span class="nt">a</span> <span class="p">{</span> <span class="k">text-decoration</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span> <span class="p">}</span>
+</pre></div>
 
   <hr>
 
