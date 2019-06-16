@@ -1,16 +1,17 @@
+{% set SITE_NAME = "Pleasant nonsense, by Alex" %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>{{ title|d('Almost there...') }}</title>
+    <title>{{ title|d(SITE_NAME) }}</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/highlight.css">
   </head>
   <body>
 
   <header>
-    <h1><a href="/">Almost there...</a></h1>
+    <h1><a href="/">{{ SITE_NAME }}</a></h1>
     <a href="/">blog</a> |
     <a target="_blank" href="https://github.com/slint">github</a> |
     <a target="_blank" href="https://gitter.im/slint">gitter</a> |
