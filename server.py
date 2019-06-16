@@ -1,7 +1,8 @@
 #!/usr/bin/env python
-from livereload import Server, shell
 import subprocess
 import sys
+
+from livereload import Server
 
 # run initial build
 subprocess.run('./build.py')
