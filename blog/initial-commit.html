@@ -27,7 +27,7 @@
   
   <h1>Initial commit: how I built my blog</h1>
 <p>Hey y'all, I decided to start a blog! I've been thinking of doing so for a while now and as the saying goes, <em>"there's no better time than the present"</em>. This is not meant to be a steady <em>one-post-per-week</em> kind of thing (god forbid...), but more of an occasional brain dump of things I come across at work/personal time and I'd like to write about. Most of these "things" will probably be programming-related, but I might sneak in a couple of other topics, like music, TV-series/movies, and other normal-people stuff if I feel fancy.</p>
-<p>I feel that while writing code is a big part of a developer's life, <strong>any writing</strong> in general should also be something one practices to be able to document and communicate things in a better//faster/easier way. Also, to hell with it, if you feel like doing something, just do it!</p>
+<p>I feel that while writing code is a big part of a developer's life, <strong>any writing</strong> in general should also be something one practices to be able to document and communicate things in a better/faster/easier way. Also, to hell with it, if you feel like doing something, just do it!</p>
 <p>In order to not just keep two puny paragraphs of an explanation to why I want to write about stuff and post it online, I also thought it would be nice to give an actual example of something I would write about. I built this blog from scratch and this is what I'll talk about.</p>
 <h2>Why build it from scratch?</h2>
 <ol>
@@ -35,7 +35,7 @@
 <p><strong>Wrong!</strong> What exactly is so complicated about creating <code>3 + (number-of-blog-posts)</code> pages that look decent, to the point that I need <a target="_blank" href="https://www.gatsbyjs.org/">bloody ReactJS</a> to do it?</p>
 </li>
 <li>I want to end up with something that feels unique and personal. Even if I decided to customize one of the above tools/frameworks, it would still feel like a cookiecutter-website, in the same fashion that when I see a Bootstrap or Wordpress website I know how it was made.</li>
-<li><p>At the time I'm writing this people seem to really like writing blog posts on a site called <a target="_blank" href="https://medium.com/">Medium</a> and the related site <a target="_blank" href="https://hackernoon.com">Hackernoon</a>. I used to think that content that ends up there has a certain quality. Nowadays, <strong>I absolutely hate this website...</strong> It seems to tick every box on the 2019 list of "Things that will mildly annoy you while you're trying to read some actual content to the point of disgust". It has paywall-like pop-ups. It has privacy/cookie/ToS/whatever bars at the bottom. It has ads. It has permanently floating top and bottom bars with the website logo, the menu and some mumbo-jumbo about subscribing to a newsletter.</p>
+<li><p>At the time I'm writing this people seem to really like writing blog posts on a site called <a target="_blank" href="https://medium.com/">Medium</a> and its related site <a target="_blank" href="https://hackernoon.com">Hackernoon</a>. I used to think that content that ends up there has a certain quality. Nowadays, <strong>I absolutely hate this website...</strong> It seems to tick every box on the 2019 list of "Things that will mildly annoy you while you're trying to read some actual content, to the point of disgust". It has paywall-like pop-ups. It has privacy/cookie/ToS/whatever bars at the bottom. It has ads. It has permanently floating top and bottom bars with the website logo, the menu and some mumbo-jumbo about subscribing to a newsletter.</p>
 <p>The combination of all these, plus a general lack of good typography, make this website one of the worst experiences I've ever had for the simple act of reading 15 minutes of text. If I ever happen to have someone read my depressing blobs of text, I would like them to get offended by the actual content and not the lack of a good delivery method.</p>
 </li>
 <li><strong>It's a fun and easy thing to do!</strong> How long ago was it that you just had to write simple code that does simple stuff? After a while on the job you lose this luxury... It was a very pleasant change to start thinking in a minimalist but pragmatist way of building something that will reliably do one thing well and won't get in your way while you try to edit your actual content.</li>
@@ -45,6 +45,7 @@
 <p>All this is done via the Python script called <a target="_blank" href="https://github.com/slint/slint.github.io/blob/source/build.py"><code>build.py</code></a>. Running this will copy and generate all the <code>.{html,css}</code> files in a <code>_build</code> folder:</p>
 <div class="highlight"><pre><span></span><span class="n">blog_posts</span> <span class="o">=</span> <span class="p">[]</span>
 
+<span class="c1"># pathlib.Path is pure bliss to use when dealing with paths and files</span>
 <span class="k">for</span> <span class="n">md_file</span> <span class="ow">in</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*.md&#39;</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;processing {md_file}&#39;</span><span class="p">)</span>
     <span class="n">title</span><span class="p">,</span> <span class="n">created</span><span class="p">,</span> <span class="n">updated</span><span class="p">,</span> <span class="n">html</span> <span class="o">=</span> <span class="n">md_to_html</span><span class="p">(</span><span class="n">md_file</span><span class="p">)</span>
@@ -120,6 +121,27 @@
             <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;&lt;a {target} href=&quot;{link}&quot;&gt;{text}&lt;/a&gt;&#39;</span>
         <span class="n">title</span> <span class="o">=</span> <span class="n">mistune</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">quote</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;&lt;a {target} href=&quot;{link}&quot; title=&quot;{title}&quot;&gt;{text}&lt;/a&gt;&#39;</span>
+</pre></div>
+<h2>Developer/User experience</h2>
+<p>If I want to create a new blog post I just create a new <code>.md</code> file inside the <code>content/blog</code> folder, I come up with a nice title and just start spewing out enough non-sense to fill-up 10-20min of someone's reading time.</p>
+<p>I like the WYSIWYG experience, where making even a small change to any kind of file relevant to how things should render, triggers and immediate rebuild of the result and shows it to you. Tools like <a target="_blank" href="http://livereload.com/">LiveReload</a> have made this kind of experience pretty seamless, and as always there's a <a target="_blank" href="https://github.com/lepture/python-livereload">Python package</a> which brings this magic to our fingertips. I thus have a <code>server.py</code> script which runs a LiveReload server, monitoring <code>.css</code> and <code>.md</code> files:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">livereload</span> <span class="kn">import</span> <span class="n">Server</span>
+
+<span class="c1"># run initial build</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;./build.py&#39;</span><span class="p">)</span>
+
+<span class="n">server</span> <span class="o">=</span> <span class="n">Server</span><span class="p">()</span>
+<span class="n">server</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="s1">&#39;base.jinja2&#39;</span><span class="p">,</span> <span class="s1">&#39;./build.py&#39;</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="s1">&#39;content/*.md&#39;</span><span class="p">,</span> <span class="s1">&#39;./build.py&#39;</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="s1">&#39;content/blog/*.md&#39;</span><span class="p">,</span> <span class="s1">&#39;./build.py&#39;</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="s1">&#39;*.css&#39;</span><span class="p">,</span> <span class="s1">&#39;./build.py&#39;</span><span class="p">)</span>
+
+<span class="n">open_in_browser</span> <span class="o">=</span> <span class="s1">&#39;-o&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span>
+<span class="n">server</span><span class="o">.</span><span class="n">serve</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;_build/&#39;</span><span class="p">,</span> <span class="n">open_url</span><span class="o">=</span><span class="n">open_in_browser</span><span class="p">)</span>
 </pre></div>
 <h2>Aesthetics</h2>
 <p>I'm not a CSS guru and I have to admit that I have to properly catch-up up at some point with <code>display: flex</code>. I'm also definitely not a designer. But before starting I had in mind some good examples of blogs/pages that I enjoy reading, not only because of the content, but because of the simplicity of their design. Some of these sources of inspiration are:</p>
