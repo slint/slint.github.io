@@ -23,7 +23,7 @@
   <small title="2019-06-13T17:21:23+02:00">written on Thursday, June 13, 2019</small>
   
   
-  <small title="2019-06-16T05:59:57+02:00"> (updated on Sunday, June 16, 2019)</small>
+  <small title="2019-06-16T06:19:46+02:00"> (updated on Sunday, June 16, 2019)</small>
   
   <h1>Initial commit: how I built my blog</h1>
 <p>Hey y'all, I decided to start a blog! I've been thinking of doing so for a while now and as the saying goes, <em>"there's no better time than the present"</em>. This is not meant to be a steady <em>one-post-per-week</em> kind of thing (god forbid...), but more of an occasional brain dump of things I come across at work/personal time and I'd like to write about. Most of these "things" will probably be programming-related, but I might sneak in a couple of other topics, like music, TV-series/movies, and other normal-people stuff if I feel fancy.</p>
@@ -67,6 +67,10 @@
 <span class="n">output_file</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span>
     <span class="n">content</span><span class="o">=</span><span class="n">Markup</span><span class="p">(</span><span class="n">md</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)))</span>
 <span class="p">))</span>
+
+<span class="c1"># Copy CSS files</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="s1">&#39;style.css&#39;</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="s1">&#39;highlight.css&#39;</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span>
 </pre></div>
 <p>Some notable "fancy" stuff that happens:</p>
 <ul>
