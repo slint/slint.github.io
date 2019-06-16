@@ -3,29 +3,139 @@
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>Initial commit and how I built my blog</title>
+    <title>Initial commit: how I built my blog</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/highlight.css">
   </head>
   <body>
+
   <header>
-    <h1>Almost there...</h1>
+    <h1><a href="/">Almost there...</a></h1>
     <a href="/">blog</a> |
     <a target="_blank" href="https://github.com/slint">github</a> |
     <a target="_blank" href="https://gitter.im/slint">gitter</a> |
     <a target="_blank" href="https://twitter.com/AlexIoPan">twitter</a> |
     <a href="/about.html">about</a>
   </header>
-  <hr>
-  <h1>Initial commit and how I built my blog</h1>
-<p>Hey y'all! Here's my first blog post, just testing stuff out...</p>
 
-  
-  <small title="2019-06-13T18:13:43.811661">written on Thursday, June 13, 2019</small>
-  
   <hr>
+  
+  <small title="2019-06-13T17:21:23+02:00">written on Thursday, June 13, 2019</small>
+  
+  
+  <small title="2019-06-16T05:59:57+02:00"> (updated on Sunday, June 16, 2019)</small>
+  
+  <h1>Initial commit: how I built my blog</h1>
+<p>Hey y'all, I decided to start a blog! I've been thinking of doing so for a while now and as the saying goes, <em>"there's no better time than the present"</em>. This is not meant to be a steady <em>one-post-per-week</em> kind of thing (god forbid...), but more of an occasional brain dump of things I come across at work/personal time and I'd like to write about. Most of these "things" will probably be programming-related, but I might sneak in a couple of other topics, like music, TV-series/movies, and other normal-people stuff if I feel fancy.</p>
+<p>I feel that while writing code is a big part of a developer's life, <strong>any writing</strong> in general should also be something one practices to be able to document and communicate things in a better//faster/easier way. Also, to hell with it, if you feel like doing something, just do it!</p>
+<p>In order to not just keep two puny paragraphs of an explanation to why I want to write about stuff and post it online, I also thought it would be nice to give an actual example of something I would write about. I built this blog from scratch and this is what I'll talk about.</p>
+<h2>Why build it from scratch?</h2>
+<ol>
+<li><p>People use things like <a target="_blank" href="https://www.getlektor.com/">Lektor</a>, <a target="_blank" href="https://gohugo.io/">Hugo</a> and <a target="_blank" href="https://jekyllrb.com/">Jekyll</a> to generate static websites. These tools are perfectly fine for setting up something quickly which looks good and holds content, and at the end of the day I'm just one guy that wants to write some Markdown and put it on the internet. Sounds like a good fit right?</p>
+<p><strong>Wrong!</strong> What exactly is so complicated about creating <code>3 + (number-of-blog-posts)</code> pages that look decent, to the point that I need <a target="_blank" href="https://www.gatsbyjs.org/">bloody ReactJS</a> to do it?</p>
+</li>
+<li>I want to end up with something that feels unique and personal. Even if I decided to customize one of the above tools/frameworks, it would still feel like a cookiecutter-website, in the same fashion that when I see a Bootstrap or Wordpress website I know how it was made.</li>
+<li><p>At the time I'm writing this people seem to really like writing blog posts on a site called <a target="_blank" href="https://medium.com/">Medium</a> and the related site <a target="_blank" href="https://hackernoon.com">Hackernoon</a>. I used to think that content that ends up there has a certain quality. Nowadays, <strong>I absolutely hate this website...</strong> It seems to tick every box on the 2019 list of "Things that will mildly annoy you while you're trying to read some actual content to the point of disgust". It has paywall-like pop-ups. It has privacy/cookie/ToS/whatever bars at the bottom. It has ads. It has permanently floating top and bottom bars with the website logo, the menu and some mumbo-jumbo about subscribing to a newsletter.</p>
+<p>The combination of all these, plus a general lack of good typography, make this website one of the worst experiences I've ever had for the simple act of reading 15 minutes of text. If I ever happen to have someone read my depressing blobs of text, I would like them to get offended by the actual content and not the lack of a good delivery method.</p>
+</li>
+<li><strong>It's a fun and easy thing to do!</strong> How long ago was it that you just had to write simple code that does simple stuff? After a while on the job you lose this luxury... It was a very pleasant change to start thinking in a minimalist but pragmatist way of building something that will reliably do one thing well and won't get in your way while you try to edit your actual content.</li>
+</ol>
+<h2>So how does it work?</h2>
+<p>There's a folder called <code>content</code>. If you put <code>.md</code> files in there, they will get converted into <code>.html</code> pages served at the root of the website (e.g. <a  href="/about.html">/about.html</a>). Pages generated from the <code>.md</code> files in the <code>content/blog</code> folder, will also be part of a "catalog" that lives in <a  href="/">index.html</a>.</p>
+<p>All this is done via the Python script called <a target="_blank" href="https://github.com/slint/slint.github.io/blob/source/build.py"><code>build.py</code></a>. Running this will copy and generate all the <code>.{html,css}</code> files in a <code>_build</code> folder:</p>
+<div class="highlight"><pre><span></span><span class="n">blog_posts</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">md_file</span> <span class="ow">in</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*.md&#39;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;processing {md_file}&#39;</span><span class="p">)</span>
+    <span class="n">title</span><span class="p">,</span> <span class="n">created</span><span class="p">,</span> <span class="n">updated</span><span class="p">,</span> <span class="n">html</span> <span class="o">=</span> <span class="n">md_to_html</span><span class="p">(</span><span class="n">md_file</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;blog&#39;</span> <span class="ow">in</span> <span class="n">md_file</span><span class="o">.</span><span class="n">parts</span><span class="p">:</span>
+        <span class="n">blog_posts</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">md_file</span><span class="o">.</span><span class="n">stem</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">created</span><span class="p">,</span> <span class="n">updated</span><span class="p">))</span>
+
+    <span class="n">output_file</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">/</span> <span class="n">Path</span><span class="p">(</span><span class="o">*</span><span class="n">md_file</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.html&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">output_file</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">output_file</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;writing {output_file}&#39;</span><span class="p">)</span>
+
+<span class="c1"># Build index page</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">slug</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">created</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">blog_posts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="n">created_str</span> <span class="o">=</span> <span class="p">(</span><span class="n">created</span> <span class="ow">or</span> <span class="n">dt</span><span class="o">.</span><span class="n">now</span><span class="p">())</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%A, %B </span><span class="si">%-d</span><span class="s2">, %Y&quot;</span><span class="p">)</span>
+    <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;- [{title}](/blog/{slug}.html) ({created_str})&#39;</span><span class="p">)</span>
+
+<span class="n">output_file</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">/</span> <span class="s1">&#39;index.html&#39;</span>
+<span class="n">output_file</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span>
+    <span class="n">content</span><span class="o">=</span><span class="n">Markup</span><span class="p">(</span><span class="n">md</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)))</span>
+<span class="p">))</span>
+</pre></div>
+<p>Some notable "fancy" stuff that happens:</p>
+<ul>
+<li>Title extraction from the Markdown files (using <code>mistune</code>):</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_title</span><span class="p">(</span><span class="n">markdown</span><span class="p">):</span>
+    <span class="c1"># mistune parses Markdown into tokens. First level-1 header is the title</span>
+    <span class="k">return</span> <span class="nb">next</span><span class="p">((</span>
+        <span class="n">token</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">mistune</span><span class="o">.</span><span class="n">BlockLexer</span><span class="p">()</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">markdown</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">token</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;heading&#39;</span> <span class="ow">and</span> <span class="n">token</span><span class="p">[</span><span class="s1">&#39;level&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="p">),</span> <span class="bp">None</span><span class="p">)</span>
+</pre></div>
+<ul>
+<li>Created/updated datetime of each blog post (from the git history of each file):</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_date_info</span><span class="p">(</span><span class="n">md_file</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;blog&#39;</span> <span class="ow">in</span> <span class="n">md_file</span><span class="o">.</span><span class="n">parts</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># fetch all modification dates for the file from &quot;git log&quot;</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span>
+                <span class="n">f</span><span class="s1">&#39;git log --format=%ai {md_file}&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="n">dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">output</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="c1"># last date is that of creation</span>
+                <span class="n">dt</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S %z&quot;</span><span class="p">),</span>
+                <span class="c1"># first date is from last update</span>
+                <span class="n">dt</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S %z&quot;</span><span class="p">),</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="k">return</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+</pre></div>
+<ul>
+<li>Code highlighting using <a target="_blank" href="http://pygments.org"><code>Pygments</code></a>:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">block_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">lang</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">lang</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&lt;pre&gt;&lt;code&gt;{mistune.escape(code)}&lt;/code&gt;&lt;/pre&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">lexer</span> <span class="o">=</span> <span class="n">pygments</span><span class="o">.</span><span class="n">lexers</span><span class="o">.</span><span class="n">get_lexer_by_name</span><span class="p">(</span><span class="n">lang</span><span class="p">,</span> <span class="n">stripall</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">formatter</span> <span class="o">=</span> <span class="n">pygments</span><span class="o">.</span><span class="n">formatters</span><span class="o">.</span><span class="n">html</span><span class="o">.</span><span class="n">HtmlFormatter</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">pygments</span><span class="o">.</span><span class="n">highlight</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">lexer</span><span class="p">,</span> <span class="n">formatter</span><span class="p">)</span>
+</pre></div>
+<ul>
+<li>External links get opened in a new tab via generating <code>&lt;a&gt;</code> tags with the <code>target="_blank"</code> attribute:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">link</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">link</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="n">link</span> <span class="o">=</span> <span class="n">mistune</span><span class="o">.</span><span class="n">escape_link</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">link</span><span class="p">)</span><span class="o">.</span><span class="n">netloc</span><span class="p">:</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;target=&quot;_blank&quot;&#39;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">title</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;&lt;a {target} href=&quot;{link}&quot;&gt;{text}&lt;/a&gt;&#39;</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">mistune</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">quote</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">f</span><span class="s1">&#39;&lt;a {target} href=&quot;{link}&quot; title=&quot;{title}&quot;&gt;{text}&lt;/a&gt;&#39;</span>
+</pre></div>
+<h2>Aesthetics</h2>
+<p>I'm not a CSS guru and I have to admit that I have to properly catch-up up at some point with <code>display: flex</code>. I'm also definitely not a designer. But before starting I had in mind some good examples of blogs/pages that I enjoy reading, not only because of the content, but because of the simplicity of their design. Some of these sources of inspiration are:</p>
+<ul>
+<li><a target="_blank" href="http://lucumr.pocoo.org/">Armin Ronacher aka <code>mitsuhiko</code>'s blog</a></li>
+<li><a target="_blank" href="http://antirez.com/">Salvatore Sanfilippo aka <code>antirez</code>'s blog</a></li>
+<li><a target="_blank" href="https://brandur.org/articles"><code>brandur</code>'s blog</a></li>
+<li><a target="_blank" href="https://jgthms.com/web-design-in-4-minutes/">"Web Design in 4 Minutes"</a>, by Jeremy Thomas, creator of the Bulma CSS framework</li>
+</ul>
+<p>By hacking around I ended up with <a target="_blank" href="https://github.com/slint/slint.github.io/blob/source/style.css">~30 lines of CSS</a> that make the darn thing pleasant to look at.</p>
+
+  <hr>
+
   <footer>
-    <p>© Copyright 2019 by Alex Ioannidis. Content licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 License</a>.</p>
+    <small>© Copyright 2019 by Alex Ioannidis. Content licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 License</a>.</small>
   </footer>
-  </body>
+
+</body>
 </html>
