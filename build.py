@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from distutils.dir_util import copy_tree
 from pathlib import Path
 import shutil
 import subprocess
@@ -97,7 +98,7 @@ for md_file in Path('content').glob('**/*.md'):
 
 # Build index page
 lines = []
-for slug, title, created, _ in sorted(blog_posts, key=lambda p: p[1], reverse=True):
+for slug, title, created, _ in sorted(blog_posts, key=lambda p: p[2], reverse=True):
     created_str = (created or dt.now()).strftime("%A, %B %-d, %Y")
     lines.append(f'- [{title}](/blog/{slug}.html) ({created_str})')
 
@@ -109,5 +110,8 @@ output_file.write_text(template.render(
 # Copy CSS files
 shutil.copy('style.css', output_dir)
 shutil.copy('highlight.css', output_dir)
+
+# Copy images
+copy_tree('content/images', str(output_dir / 'images'))
 
 print('build finished')
