@@ -25,7 +25,8 @@ code, pre {
   font-size: 0.8em;
 }
 code { padding: 2px 4px; vertical-align: text-bottom; }
-pre { padding: 1em; overflow: auto; border-left: 2px solid #C04144; }
+pre { padding: 1em; overflow: auto; border-left: 2px solid #F0A202; }
 
 header h1 { font-size: 3em; }
 header h1 a { text-decoration: none; }
+header h1 i { color: #F0A202; }
