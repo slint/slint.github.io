@@ -2,12 +2,9 @@
 
 ## Usage
 
-```bash
-# create a virtualenv and install deps
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+Make sure you have [`uv` installed](https://docs.astral.sh/uv/getting-started/installation/).
 
+```bash
 # to build:
 ./build.py
 
@@ -18,5 +15,5 @@ pip install -r requirements.txt
 ./deploy.sh
 
 # To generate code highlighting CSS:
-pygmentize -S colorful -f html -a .highlight > highlight.css
+uvx --from pygments pygmentize -S colorful -f html -a .highlight > highlight.css
 ```
