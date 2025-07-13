@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Blessed screenshot OCR, by Alex</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/highlight.css">
+  </head>
+  <body>
+
+  <header>
+    <h1><a href="/">The goddamn blog,<i> by Alex</i></a></h1>
+    <a href="/">blog</a> |
+    <a target="_blank" href="https://github.com/slint">github</a> |
+    <a target="_blank" href="https://x.com/AlexIoPan">x</a> |
+    <a href="/about.html">about</a>
+  </header>
+
+  <hr>
+  
+  <small title="2019-09-28T23:08:09+02:00">written on Saturday, September 28, 2019</small>
+  
+  
+  <h1>Blessed screenshot OCR</h1>
+<p>I decided that I want to talk about <a target="_blank" href="https://github.com/slint/dotfiles">my general computer
+setup</a>... But I don't want to do this in one
+big write-up. For starters, there's the the obvious benefit of stretching this
+topic into multiple posts and keeping readers hooked onto what's gonna be the
+next chapter in this epic saga of dotfiles. It's also much easier for me to
+just pick a cool small or medium-sized part of my current setup and write a
+thorough overview of what was the original need for the thing, what was my
+process to find the solution, and how I implemented it and use it on my
+day-to-day life.</p>
+<p>So let's kick it off amigos!</p>
+<h2>What in tarnation...</h2>
+<p>In this modern age of computing there's yet another way to split the masses:</p>
+<ul>
+<li>people that understand the concept of <strong>data</strong></li>
+<li>people that just <strong>see</strong> stuff on the screen</li>
+</ul>
+<p>The second category usually also fails to get around the magic of abstractions
+and the general concept of composition:</p>
+<ul>
+<li><strong>Documents</strong> are made out of <strong>paragraphs</strong>. <strong>Paragraphs</strong> are made out of
+<strong>sentences</strong>. <strong>Sentences</strong> are made out of <strong>words</strong>.</li>
+<li><strong>Websites</strong> are made out of <strong>pages</strong>. Pages are made out of <strong>images</strong>,
+<strong>text</strong>, etc.</li>
+</ul>
+<p>This is an important concept, because you cannot have <strong>the whole</strong> without its
+individual <strong>parts</strong>. And here's where this is important:</p>
+<p><img src="/images/error-mail.png" alt="Twat email..." /></p>
+<p>Dear idiot. Why on earth did you decide to share this information with me in
+this format? I mean it's obvious that you are on a computer. It's obvious that
+you have a pointing device (otherwise you couldn't possibly navigate the damn
+website), which means you could select and copy-paste the text. But you decided
+not to... Why do I have to do go through a man-made CAPTCHA to help you out?</p>
+<p>One day I turned on my computer and decided that this has to stop. I've heard
+enough fearmongering about the fact that computers can now <em>&quot;see&quot;</em> and
+<em>&quot;feel&quot;</em>, so I'm going to give in and actually make use of their senses.</p>
+<h2>flameshot!</h2>
+<p>From time to time I need to take screenshots of stuff and annotate them, e.g.
+when I want to put a big red arrow to point out what's a UI problem on a page.
+Windows and MacOS come with some default software to do that, but on Linux you
+have to do some digging... I found
+<a target="_blank" href="https://github.com/lupoDharkael/flameshot">flameshot</a> and I like it because:</p>
+<ol>
+<li>it's pretty straightforward and powerful</li>
+<li>you can call it from the CLI and it honours shell piping</li>
+</ol>
+<p>So this looks something like:</p>
+<div class="highlight"><pre><span></span>flameshot<span class="w"> </span>gui<span class="w"> </span>-p<span class="w"> </span>~/Pictures/screenshots/oof.png
+</pre></div>
+<h2>OCR for the masses</h2>
+<p>When I stumbled upon <a target="_blank" href="https://github.com/tesseract-ocr/tesseract">Tesseract
+OCR</a>, I couldn't believe it... Last
+time I tried to play around with OCR for automation purposes, was something
+like 5 years ago and I had to use some free trial Adobe software on Windows,
+where you had to run a background service thingy that every 10min processed a
+folder of images and eventually spit out the results in a different folder. Or
+maybe I was just 5 years younger and infinitely more naive and stupid. We'll
+never truly know...</p>
+<p>So here we are, in the year 2019 you can just:</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>tesseract-ocr
+$<span class="w"> </span>tesseract<span class="w"> </span>some-image-with-text.jpg<span class="w"> </span>stdout
+Lorem<span class="w"> </span>ipsum<span class="w"> </span>dolores...
+</pre></div>
+<h2>The clipboard</h2>
+<p>Very often text from my terminal has to end up in other places. Grabbing my
+mouse, selecting this text and copy-pasting like a peasant is not an option,
+since I actively try to promote elitist CLI-only propaganda to my peers. If
+they caught me in action doing such low-life maneuvers, I would lose all the
+respect and external validation I'm craving for...</p>
+<p>Thankfully, tools like <code>xclip</code>, <code>xsel</code> and <code>pbcopy</code>, make putting stuff on your
+clipboard pretty easy. Even better, I'm using <code>zsh</code> with
+<a target="_blank" href="https://github.com/robbyrussell/oh-my-zsh"><code>oh-my-zsh</code></a>, which comes with
+<a target="_blank" href="https://github.com/robbyrussell/oh-my-zsh/blob/17f4cfca99398cb5511557b8515a17bf1bf2948a/lib/clipboard.zsh#L18"><code>clipcopy</code></a>,
+a multi-platform shell function that allows you to do things like:</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;it be like this sometimes&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>clipcopy
+<span class="c1"># These condescending words are in my clipboard now</span>
+
+$<span class="w"> </span>clipcopy<span class="w"> </span>gorilla-warfare.txt
+<span class="c1"># I can now respond to insults properly via ctrl+v</span>
+</pre></div>
+<h2>With their powers combined...</h2>
+<p>If you've been reading up to this point, you might be starting to see where
+this is going. Prepare your eyes for this one-liner:</p>
+<div class="highlight"><pre><span></span>$<span class="w"> </span>flameshot<span class="w"> </span>gui<span class="w"> </span>--raw<span class="w"> </span><span class="p">|</span><span class="w"> </span>tesseract<span class="w"> </span>stdin<span class="w"> </span>stdout<span class="w"> </span><span class="p">|</span><span class="w"> </span>xclip<span class="w"> </span>-in<span class="w"> </span>-selection<span class="w"> </span>clipboard
+</pre></div>
+<p>Let's break it down to a simple version with the commands split line-by-line:</p>
+<div class="highlight"><pre><span></span><span class="c1"># 1. Open the flasmehot GUI and to select an rectangular area from my screen</span>
+<span class="c1"># and put the resulting image in a file</span>
+$<span class="w"> </span>flameshot<span class="w"> </span>gui<span class="w"> </span>--raw<span class="w"> </span>&gt;<span class="w"> </span>some-screenshot.png
+
+<span class="c1"># 2. Run Tesseract OCR on the screenshot above and put the result in a file</span>
+tesseract<span class="w"> </span>some-screenshot.png<span class="w"> </span>some-text.txt
+
+<span class="c1"># 3. Put the text from the file in my clipboard</span>
+xclip<span class="w"> </span>-in<span class="w"> </span>-selection<span class="w"> </span>clipboard
+
+<span class="c1"># 4. ???</span>
+
+<span class="c1"># 5. Profit!</span>
+</pre></div>
+<p>And here you go, yet another plague of society solved via almost a century's
+worth of technology!</p>
+
+  <hr>
+
+  <footer>
+    <small>© Copyright 2019 by Alex Ioannidis. Content licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 License</a>.</small>
+  </footer>
+
+</body>
+</html>
