@@ -1,0 +1,32 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+      
+      - name: Build site
+        run: |
+          rm -rf _build
+          ./build.py
+      
+      - name: Deploy to gh-pages
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git checkout gh-pages || git checkout --orphan gh-pages
+          git pull origin gh-pages || true
+          rsync -r _build/* ./
+          git add .
+          git commit -m "$(git log -1 master --format='%h') build" || exit 0
+          git push origin gh-pages
