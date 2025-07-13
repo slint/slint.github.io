@@ -7,6 +7,7 @@
 #   "Pygments>=2.10.0",
 # ]
 # ///
+import argparse
 import shutil
 import subprocess
 from datetime import datetime as dt
@@ -22,10 +23,22 @@ from markupsafe import Markup
 
 print("build started")
 
+# Parse command line arguments
+parser = argparse.ArgumentParser(description="Build the static blog")
+parser.add_argument(
+    "--base-url",
+    default="http://127.0.0.1:5500",
+    help="Base URL for the site (default: http://127.0.0.1:5500)",
+)
+args = parser.parse_args()
+
+BASE_URL = args.base_url
+
 output_dir = Path("_build")
 output_dir.mkdir(exist_ok=True)
 
 template = Template(Path("base.jinja2").read_text())
+template.globals["SITE_BASE_URL"] = BASE_URL
 
 
 class CustomRenderer(mistune.HTMLRenderer):
@@ -85,12 +98,17 @@ def extract_title(markdown):
     return None
 
 
-def md_to_html(md_path):
+def md_to_html(md_path: Path):
     markdown = md_path.read_text()
 
     created, updated = extract_date_info(md_path)
     title = extract_title(markdown)
     html = md(markdown)
+
+    # Generate the URL for this page
+    relative_path = Path(*md_path.with_suffix(".html").parts[1:])
+    page_url = f"{BASE_URL}/{relative_path}"
+
     return (
         title,
         created,
@@ -100,6 +118,7 @@ def md_to_html(md_path):
             created=created,
             updated=updated,
             content=Markup(html),
+            url=page_url,
         ),
     )
 

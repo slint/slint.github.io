@@ -1,10 +1,40 @@
 {% set SITE_NAME = "Zero dot ∞" %}
+{% set SITE_AUTHOR = "Alex Ioannidis" %}
+{% set SITE_DESCRIPTION = "Alex Ioannidis' blog - thoughts on programming, technology, and stuff" %}
+{% set SITE_KEYWORDS = ["programming", "technology", "blog", "software development"] %}
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>{{ title|d(SITE_NAME) }} &ndash; by Alex</title>
+    <link rel="canonical" href="{{ url|d(SITE_BASE_URL) }}">
+
+    <!-- Meta Tags -->
+    <meta name="description" content="{{ description|d(SITE_DESCRIPTION) }}">
+    <meta name="author" content="{{ SITE_AUTHOR }}">
+    <meta name="keywords" content="{{ (SITE_KEYWORDS + keywords|d([])) |join(', ') }}">
+    <meta property="og:type" content="{% if title %}article{% else %}website{% endif %}">
+    <meta property="og:url" content="{{ url|d(SITE_BASE_URL) }}">
+    <meta property="og:title" content="{{ title|d(SITE_NAME) }} &ndash; by Alex">
+    <meta property="og:description" content="{{ description|d(SITE_DESCRIPTION) }}">
+    <meta property="og:site_name" content="{{ SITE_NAME }}">
+    {% if created %}
+    <meta property="article:published_time" content="{{ created.isoformat() }}">
+    {% endif %}
+    {% if updated %}
+    <meta property="article:modified_time" content="{{ updated.isoformat() }}">
+    {% endif %}
+    <meta property="article:author" content="{{ SITE_AUTHOR }}">
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="{{ url|d(SITE_BASE_URL) }}">
+    <meta property="twitter:title" content="{{ title|d(SITE_NAME) }} &ndash; by Alex">
+    <meta property="twitter:description" content="{{ description|d(SITE_DESCRIPTION) }}">
+    <meta property="twitter:creator" content="@AlexIoPan">
+    <meta property="twitter:site" content="@AlexIoPan">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/highlight.css">
   </head>
@@ -29,7 +59,7 @@
   <hr>
 
   <footer>
-    <small>© Copyright 2019 by Alex Ioannidis. Content licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 License</a>.</small>
+    <small>© Copyright 2019 by {{ SITE_AUTHOR }}. Content licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 License</a>.</small>
   </footer>
 
 </body>
