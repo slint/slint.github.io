@@ -15,5 +15,5 @@ Make sure you have [`uv` installed](https://docs.astral.sh/uv/getting-started/in
 ./deploy.sh
 
 # To generate code highlighting CSS:
-uvx --from pygments pygmentize -S colorful -f html -a .highlight > highlight.css
+uvx --from pygments pygmentize -S default -f html -a .highlight > highlight.css
 ```
