@@ -11,6 +11,7 @@ import argparse
 import shutil
 import subprocess
 from datetime import datetime as dt
+from datetime import timezone as tz
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -71,7 +72,7 @@ md = mistune.create_markdown(
 )
 
 
-def extract_date_info(md_file):
+def extract_date_info(md_file: Path):
     if "blog" in md_file.parts:
         try:
             # fetch all modification dates for the file from "git log"
@@ -86,7 +87,10 @@ def extract_date_info(md_file):
                 dt.strptime(dates[0], "%Y-%m-%d %H:%M:%S %z"),
             )
         except Exception:
-            pass
+            file_stat = md_file.stat()
+            created = dt.fromtimestamp(file_stat.st_ctime, tz=tz.utc)
+            updated = dt.fromtimestamp(file_stat.st_mtime, tz=tz.utc)
+            return created, updated
     return None, None
 
 
@@ -138,7 +142,11 @@ for md_file in Path("content").glob("**/*.md"):
 
 # Build index page
 lines = []
-for slug, title, created, _ in sorted(blog_posts, key=lambda p: p[2], reverse=True):
+for slug, title, created, _ in sorted(
+    blog_posts,
+    key=lambda p: p[2] or dt.now(),
+    reverse=True,
+):
     created_str = (created or dt.now()).strftime("%A, %B %-d, %Y")
     lines.append(f"- [{title}](/blog/{slug}.html) ({created_str})")
 
