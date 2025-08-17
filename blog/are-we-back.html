@@ -1,0 +1,243 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Are we back? &ndash; by Alex</title>
+    <link rel="canonical" href="https://slint.github.io/blog/are-we-back.html">
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Alex Ioannidis' blog - thoughts on programming, technology, and stuff">
+    <meta name="author" content="Alex Ioannidis">
+    <meta name="keywords" content="programming, technology, blog, software development">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://slint.github.io/blog/are-we-back.html">
+    <meta property="og:title" content="Are we back? &ndash; by Alex">
+    <meta property="og:description" content="Alex Ioannidis' blog - thoughts on programming, technology, and stuff">
+    <meta property="og:site_name" content="Zero dot ∞">
+    
+    <meta property="article:published_time" content="2025-08-17T18:19:21+02:00">
+    
+    
+    <meta property="article:modified_time" content="2025-08-17T18:19:21+02:00">
+    
+    <meta property="article:author" content="Alex Ioannidis">
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:url" content="https://slint.github.io/blog/are-we-back.html">
+    <meta property="twitter:title" content="Are we back? &ndash; by Alex">
+    <meta property="twitter:description" content="Alex Ioannidis' blog - thoughts on programming, technology, and stuff">
+    <meta property="twitter:creator" content="@AlexIoPan">
+    <meta property="twitter:site" content="@AlexIoPan">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/highlight.css">
+  </head>
+  <body>
+
+  <header>
+    <h1><a href="/">Zero dot ∞ &ndash; <small><i> by Alex</i></small></a></h1>
+    <a href="/">blog</a> |
+    <a target="_blank" href="https://github.com/slint">github</a> |
+    <a target="_blank" href="https://x.com/AlexIoPan">x</a> |
+    <a href="/about.html">about</a>
+  </header>
+
+  <hr>
+  
+  <small title="2025-08-17T18:19:21+02:00">written on Sunday, August 17, 2025</small>
+  
+  
+  <h1>Are we back?</h1>
+<p>It's been almost 6 years since the last time I wrote...
+Of course things changed, but I'm also very much the same dude in my own special way.
+I looked back at my then (M27) writings, and boy did I sound like a complete idiot.
+Youthful hate towards random stuff, unaturally strong opinions (where did they come from!?), a pursuit of purity, and a very personalized sense of &quot;simplicity&quot;.</p>
+<p>Raw, uncapped <em>cringe</em>...
+as I was saying, very much the same dude!</p>
+<p>But why am I here again you may ask?
+And why didn't I write all these years?
+In some sort of &quot;reverse ghosting&quot; fashion, I'll pretend like nothing happened and just start writing again...</p>
+<p>...or maybe I can be transparent about it.
+My reasons for stopping are sort of common for personal tech blogs:</p>
+<ul>
+<li><strong>Not any &quot;burning&quot; ideas to write about:</strong>: setting up your personal development environment feels fun, but it's also kind of vanilla content.
+It's definitely nice to see other folks' posts on how they've customized their shell or use <code>tmux</code> in cool ways.
+But the times I've radically changed my day-to-day interactions with the machines are fewer nowadays.</li>
+<li><strong>I didn't have much time:</strong> (mostly) work, friends, family, (long-distance) relationships...
+How can one just be life-ing and at the same time find time to <strong>do</strong> things, and <strong>write</strong> about it?</li>
+<li><strong>It didn't run!</strong> A couple of years ago, I considered writing again and went ahead to build the blog as a first meaningful step.
+I couldn't build the damn blog!
+To be honest, with a couple more years of software engineering experience under my belt, I kind of expected that.
+My homebrewed Python script with an accompanying <code>requirements.txt</code> was a classic &quot;unreproducible summer intern project&quot;...</li>
+</ul>
+<p>And that's kind of it I guess...
+It ultimately boils down to friction and lack of motivation.
+The reality that in order to <em>do the thing</em>, you now have to also do some unknown &quot;chore&quot; beforehand.</p>
+<p>But nonetheless, here I am again!</p>
+<h2><em>&quot;Oh no, we here because of AI...&quot;</em></h2>
+<p>I feel like some asshole VC/founder on Twitter for saying this, but <strong>yes, we are!</strong>
+I know I'm not the first or last to discover or talk about how <a target="_blank" href="https://lucumr.pocoo.org/2025/6/4/changes/">&quot;AI changes everything&quot;</a>.
+But I have an undeniably good experience with using AI (well, LLMs to be precise) since the beginning of 2025.</p>
+<p>Yes, I've had the usual wild goose chase or red herring from time to time.
+I remember ChatGPT hallucinating an entire Python library and when confronted about it, go all <a target="_blank" href="https://youtu.be/FeAY1__jE6E?si=V1S0fLTdSJqn0E84"><em>&quot;You got me...&quot;</em>, Walter White style</a>.</p>
+<p>But I can also see how it has removed a lot of the friction and lack of motivation I mentioned above.
+It has acted as some form of &quot;task lubricant&quot; (<em>and yes, I stand by this choice of words!</em>) for just trying things that I would normally dimsiss as chores.
+I can now throw chores to Claude Code or Gemini and sometimes even get something extra out of it.
+And they really don't mind, they're designed to be these tireless hyperactive &quot;yes&quot;-entities.</p>
+<hr />
+<p>I'll go through a few of the things I've achieved using AI tools in these past months.
+It's a random bag of experiences that ended up forming my outlook on the effectiveness of the current tooling.</p>
+<h3>Reviving the blog</h3>
+<p>It took Claude Code about 15-20min and about 1-2 guidance interactions to fix this blog.
+It didn't care about having to go through the API changes <code>mistune</code> introduced in the latest major release.
+It also didn't care though about being &quot;smart&quot;; getting things done is what it's built for, and that it does relentlessly.</p>
+<p>I realized also that I, myself don't care about my blog being &quot;smart&quot; anymore.
+It's one of many programs that just converts Markdown to HTML.
+<strong>The ideas</strong> behind this might be somewhat &quot;smart&quot; and esoteric (i.e. handling Markdown headers and other elements, getting created/updated timestamps from <code>git</code>) at the time I thought of them.
+But the program itself has to be simple and work reliably, exactly because it's just a means to an end: making my writting easy to publish on the internet.</p>
+<h3>Migrating Python apps from <code>pipenv</code> to <code>uv</code></h3>
+<p>Back in 2018 I was high on reading about how <a target="_blank" href="https://pip.pypa.io/en/stable/topics/more-dependency-resolution/">dependency resolution is an NP-hard problem</a>.
+I tried to soak in all the discussion in the OG <a target="_blank" href="https://github.com/pypa/pip/issues/988">pypa/pip#988</a> GitHub issue and marvelled at how <a target="_blank" href="https://github.com/pradyunsg"><code>@pradyunsg</code></a> was writing about rolling out a <a target="_blank" href="https://github.com/pypa/pip/issues/6536">new dependency resolver</a> that would (re)solve all of our problems using <em>✨ m a t h s ✨</em>.</p>
+<p>I also appreciated <a target="_blank" href="https://github.com/jazzband/pip-tools"><code>pip-tools</code></a> and <a target="_blank" href="https://pipenv.pypa.io/en/latest/"><code>pipenv</code></a> for trying to solve this problem in a practical manner, bringing a nice developer experience to Python dependency management.
+I thought <em>&quot;wow, <code>pipenv</code> even made it into <a target="_blank" href="https://packaging.python.org/en/latest/tutorials/managing-dependencies/#installing-pipenv">the offical Python dependency management guides</a>, Kenneth Reitz must be the GOAT and if we're not using this, we might as well just switch to JS&quot;</em>.</p>
+<p>That was my personal &quot;million-hour&quot; mistake.
+<code>pipenv</code> gradually degraded into one of the slowest dependency locking experiences in the ecosystem (taking several minutes to resolve in our builds), Kenneth Reitz kind of ghosted the project (as he also did <a target="_blank" href="https://vorpus.org/blog/why-im-not-collaborating-with-kenneth-reitz/">in a much more unpleasant way with <code>requests</code></a>), and its unstable future became the matter of many discussions.
+I can't imagine how horrible the maintainers of <code>pipenv</code> must have felt at the time, trying to keep this open-source mess up and going in such a negative atmosphere.</p>
+<p>After having collectively waster many hours in our projects waiting for <code>pipenv</code> to lock/install dependencies, seeing <a target="_blank" href="https://docs.astral.sh/uv/"><code>uv</code></a> eat everyone's lunch was a pleasant surprise, which I thought might bring an end to all of our Python packaging woes.
+I tried <code>uv</code> locally for a almost a year with good results, so I started shilling it hard to my colleagues.
+We slowly integrated it into our tooling and released support for it behind a flag.</p>
+<p>And now when folks asked <em>&quot;<code>uv</code> when?&quot;</em>, I could respond <em>it's already there</em>.
+There was one last problem: how does one migrate their project to use <code>uv</code>?</p>
+<h4>Take 0: <em>&quot;I'll do it&quot;</em> 🧑‍💻</h4>
+<p>I took it upon myself to convert my project from <code>pipenv</code> to <code>uv</code> by hand.
+I knew all the <code>uv</code> features I thought were necessary, so I just went for it.</p>
+<p>I started moving some of the package metadata fields (i.e. <code>title</code>, <code>license</code>, etc.).
+Then I moved dependencies and entrypoints...
+But this started feeling tedious, the format had changed and I found myself doing vim macros and whatnot to automatically fix double-quote wrapping and curly brackets.
+I'm cool with that, but I can also imagine this will feel like a chore to most folks...</p>
+<h4>Take 1: <em>&quot;Do it for me&quot;</em> 🤖</h4>
+<p>Well, as I mentioned, chores are a solved problem for AI, it just chugs through!
+So I moved 3-4 entries from each section and then sent off Claude Code to &quot;do as I did&quot;.
+It did so, an also tested that the file was working by running some basic <code>uv sync ...</code> and <code>uv pip install ...</code> commands.
+I just left it running and eventually come back to it until it had things in a good state.</p>
+<h4>Take 2: <em>&quot;Explain how to do it&quot;</em> 🤖 → 📚</h4>
+<p>I realized that asking everyone to &quot;just throw AI at it&quot; was probably not a great look for the project...
+But I had a clean atomic commit now showing exactly how this could be done.
+I guess referencing that might be enough for someone to follow along?</p>
+<p>Sending Git patches around might still be too much to ask though, we're not Linux kernel developers after all.
+Walking someone through the diff though...
+That's something we anyways do when looking at code.
+And AI is actually pretty good at doing that too, it just spits out words, putting context to the words that came before them.</p>
+<p>And thus, I asked AI to explain the commit diff and write a guide on how one could apply the same changes in their project.
+It came back with a decent Markdown document, that after a few edits would be on par with the usual migration guides you see in the wild.</p>
+<h4>Take 3: <em>&quot;Write a script to do it!&quot;</em> 🤖 → 📜</h4>
+<p>After watching <a target="_blank" href="https://www.youtube.com/watch?v=nfOVgz_omlU">Armin's video on agentic coding</a>, one thing stuck out to me:
+AI is not really good at actually &quot;doing things&quot;.
+And that's why we hook-up &quot;tool calling&quot; and &quot;MCP servers&quot; to allow it to escape its box and have an impact on the real world.
+But even with all that, it's not a reliable executor...</p>
+<p>You know what really has an impact on the real world, reliably every time?
+It's <strong>CODE</strong>, brother!
+Literally the act of putting a piece of soul in the machine and letting it off to do again and again the same thing, getting the right result every single time for a bunch of different scenarios.</p>
+<p>The best tool that AI has is not &quot;tool calling&quot; or &quot;MCP servers&quot;...
+<strong>Writing code</strong> is the best tool AI has in its disposure: one machine, plucking out of our collective ether logic threads, weaving a new soul and placing it in a bottle, creating another machine.</p>
+<p>Similar to my &quot;Take 1&quot;, I let Claude Code go off, but now with a task to write a script that does the set of changes I had already done to any project.
+And that it did, in the well-known loop of &quot;write, test, debug&quot;.
+I tested the script in a few repositories in the wild, asked Claude Code to fix any bugs and called it a day.
+I ended up opening a pull request with both the documentation and script, emphasizing parts where one probably needs to spend some manual efforts.</p>
+<h3>Fixing my slow <code>zsh</code> startup</h3>
+<p>I recently moved from <a target="_blank" href="https://ohmyz.sh/">Oh-My-Zsh</a> (OMZ) to <a target="_blank" href="https://github.com/zdharma-continuum/zinit"><code>zinit</code></a>.
+With OMZ, I slowly noticed my shell startup time getting longer and longer.
+My years of blindly appending to my <code>.zshrc</code> every snippet for better Python/Node environment management and CLI tool autocompletions, rendered my shell numb.
+I would open a new <code>tmux</code> pane, start typing frantically <code>cd &lt;tab&gt;</code> and then get no completions for like <strong>3-5 seconds</strong>.</p>
+<p>After migrating my config to <code>zinit</code> I ended up with something much more simple.
+After some <code>zprof</code> profiling, it still took <strong>1-3 seconds</strong> before the shell could respond to autocompletion...</p>
+<p>These few seconds of delay might sound like nothing, but it felt like an eternity.
+I like my interactions with everyday tools to feel snappy.
+When I pickup a pen to write, it doesn't take 3 seconds to spill out ink!</p>
+<p><code>zinit</code> might be a great tool, but its sub-commands are very esoteric (and I bet it's with good intentions).
+The docs for <code>zinit ice ...</code> say &quot;<em>ice is zinit's options command. The option melts like ice and is used only once</em>&quot;...
+Sounds cool, but I don't know that this means and I just want my shell to &quot;go brrrr!&quot;.
+I tried all the tricks I could think of, but I had reached a dead-end.
+Profiling wasn't helpful at all, the output was chaotic and without a clear culprit...</p>
+<p>I've gone through multiple iterations over the years for keeping <a target="_blank" href="https://github.com/slint/dotfiles">my dotfiles</a> tidy.
+My latest attempt is using <a target="_blank" href="https://www.gnu.org/software/stow/manual/stow.html">GNU Stow</a>, the OG &quot;symlink farm manager&quot; (I don't know what my role in this farm is, but I'm happy to be involved!).
+The cool thing is that in the end it's just a GitHub repo and all the files are in a single directory...</p>
+<p>...which means I can unleash Claude Code upon them to just figure out what the heck is wrong!
+This felt a bit risky of course, since besides reading the dotfiles, Claude might also have to run some commands to profile the startup time and see that things work.
+Thus, I considered it wise to vet all the commands that Claude suggested.</p>
+<p>And in the end it figured things out!
+It changed the order of some of the commands, used <code>zinit wait'1 lucid ...</code>, and initialized some autocompletions inside a background process.
+Looking at the diff, I understood the techniques and did some of my own and moved things around to further improve and tidy things up.
+Without ever having to completely read the obscure <code>zinit</code> docs, my shell takes now less than 0.3sec to load!</p>
+<h3>Making automated messsage alerts look nice</h3>
+<p>We're using <a target="_blank" href="https://mattermost.com/">Mattermost</a> at work as the official messaging solution for internal communication, and it's fantastic.
+Like many messaging platforms, it supports setting up webhooks for channels that you can then use to send arbitrary messages.
+This is an excellent solution for when e.g. you have a script or monitoring service that needs to send off an alert.</p>
+<p>What I wanted to do, is run a script every Monday morning in one of our VMs, to check some storage quota and give us a heads up in case we're running out of space.
+Some colleagues had already a version of that script that produced an info-dump in plaintext to send via email.
+Reading the Mattermost docs on <a target="_blank" href="https://developers.mattermost.com/integrate/webhooks/incoming/">incoming webhooks</a> gave me some first pointers on the payload format.
+I quickly put my script together, and got a decent &quot;info dump&quot;-style of message:</p>
+<p><img src="/images/basic-mm-alert.png" alt="Simple alert message (some values are edited/omitted)" /></p>
+<p>It wasn't the prettiest thing in the world, but squeezing 20-30% out of the docs and tweaking information density to get more polished visuals didn't feel like a good use of time.
+Even if I had a free junior/intern developer I would have hesitated to throw them the task, there are more important things (like real bugs) to work on.</p>
+<hr />
+<p>A couple of weeks passed, and the Monday message felt like a thorn on my side, my eyes purposefully avoiding to parse the raw unformatted numbers, cringing at the lack of a clear number to tell me if &quot;we're good&quot; or not.
+I resisted the tempation to open up the script and change it (there were obviously more important things to do)...
+I reconsidered though my approach on delegating the task to someone, and that &quot;someone&quot; ended up being Claude Code.</p>
+<p>So far I've been treating my prompting with some care.
+In the end I want to give the LLMs a fair chance at understanding an solving what I ask from them.
+This time I felt that spending more than a minute on this would be overkill, so I did what every PM would:
+I took a screenshot of the message, pasted it in Claude Code, added a link to the Mattermost docs, and just said &quot;make this look nice, use whatever features/libraries you think would help&quot;.</p>
+<p>I moved on to do something else, and after ~20min, a notification went off on Mattermost.
+A new webhook message arrived showing the report, this time formatted using <em>every</em> feature that a Mattermost message could hold, emojis, ASCII-art and the whole shebang.
+It was not <em>exactly</em> what I wanted, but the needle had definitely moved towards the right direction.</p>
+<p>I retook my screenshot, annotated on it what I didn't like and explained in the prompt with more detail what I wanted different.
+~15min later, we're back with the following message:</p>
+<p><img src="/images/enhanced-mm-alert.png" alt="Enhanced alert message (some values edited/omitted)" /></p>
+<hr />
+<p>None of the above experiences I wrote about sound like impressive achievements or life-changing work.
+At their best, they might be described as well-supervised efforts of a junior developer.</p>
+<p>For me and many others, documenting their existence is what makes them important.
+Which leads us to my next point...</p>
+<h2>...the point of <em>&quot;self&quot;</em> in this moment</h2>
+<p>Very existential, I know.
+But what's the point of even writing anymore for capturing the &quot;human experience&quot; in the year of our lord 2025?
+Anyone can do what I did and get similar results.
+Are these hacking experiences &quot;genuine&quot;, in the same spirit of the ones I used to write about 6 years ago?
+What kind of &quot;creative process&quot; exists in all this?</p>
+<p>These and other questions, eventually come up when discussing with other developers about AI, its use, and how it changes our industry and everyday life.
+I would have never imagined being in this situation when I started my career as a software engineer, having such fundamentally existensial discussions about our way forward.</p>
+<p>If you haven't read <a target="_blank" href="https://en.wikipedia.org/wiki/Robot_series">Asimov's Robot series</a>, I urge you to do so, more than ever in these times.
+Many of the patterns we see today like hallucinations, prompt engineering, and knowledge-worker automation, were actually already written about... <strong>in the '50s</strong>!</p>
+<p>There are stories going around about field experts and sci-fi authors asked to make predictions for humanity's future when it comes to the use of technology.
+Sci-fi authors made much more realistic predictions and have <a target="_blank" href="https://en.wikipedia.org/wiki/List_of_existing_technologies_predicted_in_science_fiction">a pretty good track record</a>.
+I imagine scientists and field experts are obviously more &quot;bullish&quot; in their predictions: they have skin in the game!</p>
+<p>This is why I am also extra-sceptical when listening to executives of AI (or AI-adopter) companies making big statements regarding big percentages of the workforce becoming obsolete in just a couple of years.</p>
+<hr />
+<p>Given all the noise, I crave for a &quot;control sample&quot; to exist in this grand experiment.</p>
+<h3><em><strong>I want my written thoughts, to trully be my very own.</strong></em></h3>
+<p>So what I write in this blog is 100% typed by my human hands and always will be.</p>
+<p>It's not a matter of virgin creation or anything like this.
+Novel ideas are rare, we're anyways all just mashing together bits and pieces of information we read on a tweet or listened on a podcast, and sometimes remember to link back to that trail.</p>
+<p>I was considering to pass a draft of this blogpost to some big-brain model for copy-editing and maybe a first review to see if it all &quot;flows right&quot;.
+I did so, and as I started reading its review, felt all the mistakes and narrative issues wash over something I had spent writing over a decent part of 4 weekends.
+Unlike a piece of code being reviewed, this piece of writing actually reflects a piece of myself.</p>
+<p>If I am to phase it through the &quot;primordial token soup&quot; of an LLM, I might as well paint it blue and throw it into the ocean.
+My out-of-place references to <code>zprof</code>, Python dependency tooling, and Asimov, stripped away for the sake of clarity and to satisfy short attention spans.</p>
+<p>And well, here we are now.
+I've been left by myself to cook, and I hope the result is ugly, but at least delicious.</p>
+
+  <hr>
+
+  <footer>
+    <small>© Copyright 2019 by Alex Ioannidis. Content licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0 License</a>.</small>
+  </footer>
+
+</body>
+</html>
