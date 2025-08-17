@@ -30,3 +30,14 @@ pre { padding: 1em; overflow: auto; border-left: 2px solid #F0A202; }
 header h1 { font-size: 3em; }
 header h1 a { text-decoration: none; }
 header h1 i { color: #F0A202; }
+
+img { max-width: 95%; display: block; margin: 1.5em auto; }
+
+blockquote {
+  margin: 1em 0;
+  padding: 0.5em 0.8em;
+  border-left: 4px solid #F0A202;
+  background: #f9f9f9;
+  color: #555;
+}
+blockquote > p { margin: 0; }
