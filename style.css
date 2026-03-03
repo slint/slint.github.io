@@ -1,6 +1,32 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
 
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --text: #444444;
+  --heading: #222222;
+  --link: #1a5579;
+  --accent: #f0a202;
+  --code-bg: #f5f7f9;
+  --code-border: #d8dee9;
+  --blockquote-bg: #f9f9f9;
+  --blockquote-text: #555555;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1a2e;
+    --text: #dddddd;
+    --heading: #eeeeee;
+    --link: #6db3d8;
+    --code-bg: #2a2a3e;
+    --code-border: #444444;
+    --blockquote-bg: #222222;
+    --blockquote-text: #bbbbbb;
+  }
+}
+
 body {
   margin: 0 auto;
   max-width: 50em;
@@ -10,34 +36,35 @@ body {
   text-align: justify;
   line-height: 1.5;
   padding: 2em 1em;
-  color: #444;
+  background: var(--bg);
+  color: var(--text);
 }
 
-a { color: #1a5579; }
-h1, h2, strong { color: #222; }
+a { color: var(--link); }
+h1, h2, strong { color: var(--heading); }
 h1 { margin: 0 auto; }
 h2 { padding-top: 0.5em; }
 
 code, pre {
-  background: #f5f7f9;
-  border-bottom: 1px solid #d8dee9;
+  background: var(--code-bg);
+  border-bottom: 1px solid var(--code-border);
   font-family: 'Source Code Pro', monospace;
   font-size: 0.8em;
 }
 code { padding: 2px 4px; vertical-align: text-bottom; }
-pre { padding: 1em; overflow: auto; border-left: 2px solid #F0A202; }
+pre { padding: 1em; overflow: auto; border-left: 2px solid var(--accent); }
 
 header h1 { font-size: 3em; }
 header h1 a { text-decoration: none; }
-header h1 i { color: #F0A202; }
+header h1 i { color: var(--accent); }
 
 img { max-width: 95%; display: block; margin: 1.5em auto; }
 
 blockquote {
   margin: 1em 0;
   padding: 0.5em 0.8em;
-  border-left: 4px solid #F0A202;
-  background: #f9f9f9;
-  color: #555;
+  border-left: 4px solid var(--accent);
+  background: var(--blockquote-bg);
+  color: var(--blockquote-text);
 }
 blockquote > p { margin: 0; }

@@ -73,3 +73,119 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
 .highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666 } /* Literal.Number.Integer.Long */
+
+@media (prefers-color-scheme: dark) {
+  td.linenos .special,
+  span.linenos.special {
+    color: #f8f8f2;
+    background-color: #3b3a32;
+  }
+
+  .highlight .hll { background-color: #3c3d38; }
+  .highlight {
+    background: #272822;
+    color: #f8f8f2;
+  }
+
+  .highlight .c,
+  .highlight .ch,
+  .highlight .cm,
+  .highlight .cpf,
+  .highlight .c1,
+  .highlight .cs {
+    color: #75715e;
+  }
+
+  .highlight .err { border: 1px solid #f92672; }
+
+  .highlight .k,
+  .highlight .kc,
+  .highlight .kd,
+  .highlight .kn,
+  .highlight .kp,
+  .highlight .kr,
+  .highlight .kt,
+  .highlight .nt {
+    color: #f92672;
+  }
+
+  .highlight .o,
+  .highlight .ow {
+    color: #f8f8f2;
+  }
+
+  .highlight .cp,
+  .highlight .se,
+  .highlight .nd,
+  .highlight .ne {
+    color: #fd971f;
+  }
+
+  .highlight .gd,
+  .highlight .gr {
+    color: #f92672;
+  }
+
+  .highlight .gh,
+  .highlight .gp,
+  .highlight .gu,
+  .highlight .gt {
+    color: #66d9ef;
+  }
+
+  .highlight .gi,
+  .highlight .na,
+  .highlight .nc,
+  .highlight .nf,
+  .highlight .fm,
+  .highlight .nn,
+  .highlight .sx {
+    color: #a6e22e;
+  }
+
+  .highlight .go,
+  .highlight .ni,
+  .highlight .w {
+    color: #8f908a;
+  }
+
+  .highlight .m,
+  .highlight .mb,
+  .highlight .mf,
+  .highlight .mh,
+  .highlight .mi,
+  .highlight .mo,
+  .highlight .il,
+  .highlight .no,
+  .highlight .ss {
+    color: #ae81ff;
+  }
+
+  .highlight .s,
+  .highlight .sa,
+  .highlight .sb,
+  .highlight .sc,
+  .highlight .dl,
+  .highlight .sd,
+  .highlight .s2,
+  .highlight .sh,
+  .highlight .si,
+  .highlight .sr,
+  .highlight .s1 {
+    color: #e6db74;
+  }
+
+  .highlight .nb,
+  .highlight .bp {
+    color: #66d9ef;
+  }
+
+  .highlight .nl,
+  .highlight .nv,
+  .highlight .vc,
+  .highlight .vg,
+  .highlight .vi,
+  .highlight .vm {
+    color: #f8f8f2;
+  }
+}
